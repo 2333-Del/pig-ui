@@ -1,51 +1,25 @@
 <template>
   <div>
-
-
   <div class="header">
     <h1 class="header-title">大屏数据可视化模板</h1>
   </div>
   <div class="wrapper">
     <div class="content">
       <div class="col col-l">
-        <div class="xpanel-wrapper xpanel-wrapper-40">
-          <div class="xpanel xpanel-l-t">
-            <div class="title"></div>
-          </div>
-        </div>
-        <div class="xpanel-wrapper xpanel-wrapper-60">
-          <div class="xpanel xpanel-l-b">
-            <div class="title"></div>
-          </div>
-        </div>
+<!--       left1-->
+        <left1></left1>
+<!--        left2-->
+        <left2></left2>
       </div>
       <div class="col col-c">
-        <div class="xpanel-wrapper xpanel-wrapper-75">
-          <div class="xpanel no-bg">
-          </div>
-        </div>
-        <div class="xpanel-wrapper xpanel-wrapper-25">
-          <div class="xpanel xpanel-c-b">
-            <div class="title title-long"></div>
-          </div>
-        </div>
+       <mid1></mid1>
+        <mid2></mid2>
       </div>
       <div class="col col-r">
-        <div class="xpanel-wrapper xpanel-wrapper-25">
-          <div class="xpanel xpanel-r-t">
-            <div class="title"></div>
-          </div>
-        </div>
-        <div class="xpanel-wrapper xpanel-wrapper-30">
-          <div class="xpanel xpanel-r-m">
-            <div class="title"></div>
-          </div>
-        </div>
-        <div class="xpanel-wrapper xpanel-wrapper-45">
-          <div class="xpanel xpanel-r-b">
-            <div class="title"></div>
-          </div>
-        </div>
+       <right1></right1>
+
+       <right2></right2>
+       <right3></right3>
       </div>
     </div>
   </div>
@@ -54,9 +28,34 @@
 
 <script>
 import "../../../public/static/css/app.css";
+import  left1 from "../../components/Bigscreen/left1";
+import  left2 from "../../components/Bigscreen/left2";
+import  mid1 from "../../components/Bigscreen/mid1";
+import  mid2 from "../../components/Bigscreen/mid2";
+import Right1 from "@/components/Bigscreen/right1";
+import Right2 from "@/components/Bigscreen/right2";
+import Right3 from "@/components/Bigscreen/right3";
+
 export default {
-  name: "index2"
+  name: "index",
+  data: {
+
+  },
+  methods: {
+
+  },
+  components: {
+    Right3,
+    Right2,
+    Right1,
+    left1,
+    left2,
+    mid1,
+    mid2,
+  }
 }
+
+
 </script>
 
 <style scoped>
