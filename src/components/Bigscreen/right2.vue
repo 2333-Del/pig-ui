@@ -1,6 +1,6 @@
 <template>
-  <div class="xpanel-wrapper xpanel-wrapper-30">
-    <div class="xpanel xpanel-r-m">
+  <div class="xpanel-wrapper xpanel-wrapper-60">
+    <div class="xpanel xpanel-l-b">
       <div class="title">{{title}}</div>
     </div>
   </div>

@@ -1,7 +1,10 @@
 <template>
-  <div class="xpanel-wrapper xpanel-wrapper-25">
-    <div class="xpanel xpanel-r-t">
+
+  <div class="xpanel-wrapper xpanel-wrapper-40">
+    <div class="xpanel xpanel-l-t">
       <div class="title">{{title}}</div>
+      <p><el-button type="primary" :loading-icon="Eleme" loading>实时监测中</el-button></p>
+
     </div>
   </div>
 </template>
@@ -24,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+p {
+  margin: 20px;
+}
 </style>

@@ -5,7 +5,9 @@
         <el-main >
           <video id="video"></video>
           <div>
-            <p> <el-button type="primary">文本内容文本内容</el-button><el-button type="primary">文本内容文本内容</el-button><el-button type="primary">文本内容文本内容</el-button></p>
+            <p> <el-button type="primary">文本内容文本内容</el-button>
+              <el-button type="primary">文本内容文本内容</el-button>
+              <el-button type="primary">文本内容文本内容</el-button></p>
             <p> <el-button type="primary">文本内容文本内容</el-button></p>
 
           </div>
