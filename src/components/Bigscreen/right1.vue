@@ -3,8 +3,7 @@
   <div class="xpanel-wrapper xpanel-wrapper-40">
     <div class="xpanel xpanel-l-t">
       <div class="title">{{title}}</div>
-      <p ><el-button type="primary" :loading-icon="Eleme" loading>实时监测中</el-button></p>
-
+<!--      <el-button type="" :loading-icon="Eleme" loading>{{title}}</el-button>-->
     </div>
   </div>
 </template>
@@ -14,7 +13,7 @@ export default {
   name: "right1",
   data(){
     return{
-      title:"标题3",
+      title:"24小时温度检测",
     }
   },
   mounted() {

@@ -24,7 +24,7 @@ export default {
   name: "left1",
   data(){
     return{
-      title:"标题1",
+      title:"设备指标",
       items:[
         {tag_name:"温度",tag_value:"28.5",tag_mark:"℃"},
         {tag_name:"湿度",tag_value:"72",tag_mark:"%"},
