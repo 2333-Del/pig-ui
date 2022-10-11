@@ -28,24 +28,28 @@ export default {
   methods:{
     init_chart(c) {
       c = document.getElementById('piechart');
-      const chart = echarts.init(c, 'dark')
+      const chart = echarts.init(c, 'light')
       option = {
         tooltip: {
           trigger: 'item'
         },
         legend: {
+
+          textStyle:{
+            color:"#FFFFFF",
+          },
           top: '5%',
-          left: 'center'
+          left: 'center',
         },
         series: [
           {
-            name: 'Access From',
+            name: '监测数据',
             type: 'pie',
             radius: ['40%', '70%'],
             avoidLabelOverlap: false,
             itemStyle: {
               borderRadius: 10,
-              borderColor: '#fff',
+              borderColor: '#ffffff',
               borderWidth: 2
             },
             label: {
@@ -60,7 +64,7 @@ export default {
               }
             },
             labelLine: {
-              show: false
+              show: true
             },
             data: [
               { value: 28.5, name: "温度" },

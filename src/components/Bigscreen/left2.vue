@@ -1,8 +1,8 @@
 <template>
   <div class="xpanel-wrapper xpanel-wrapper-60">
     <div class="xpanel xpanel-l-b">
-      <div class="title">{{title}}</div>
-<!--      <el-button type="info" :loading-icon="Eleme" loading>{{title}}</el-button>-->
+      <div class="title">{{ title }}</div>
+      <!--      <el-button type="info" :loading-icon="Eleme" loading>{{title}}</el-button>-->
       <div class="BarChart" id="barchart"></div>
     </div>
   </div>
@@ -13,31 +13,48 @@ import * as echarts from 'echarts'
 
 require('echarts/theme/macarons') // echarts theme
 // import resize from './mixins/resize'
-
+let a = 20
 export default {
   name: 'left2',
   data() {
     return {
       title: '24小时湿度监测',
-      chart: null
+      chart: null,
+      t1 :null,
+      t2 :null,
+      n:0,
     }
   },
   mounted() {
-    this.init_chart(this.chart)
+    this.init_chart(this.chart);
+
+    let t2 = setInterval(this.init_chart,5000);
   },
   methods: {
+    rannum() {
+      let n = Math.random() * 20 + 30;
+      console.log(n);
+      return n;
+    },
     init_chart(c) {
       c = document.getElementById('barchart')
-      const chart = echarts.init(c, 'dark')
+      let chart = echarts.init(c, 'light')
       let animationDuration = 6000
-      const option = {
-        title: {
-          text: ''//标题可以不要
+      let option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer:{
+            type:"shadow",
+          }
         },
-        tooltip: {},
-        legend: {},
         xAxis: {
-          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+          type: 'category',
+          data: ['1', '2', '3', '4', '5'],
+          axisLine: {
+            lineStyle: {
+              color: 'rgb(255,255,255)'
+            }
+          }
         },
         yAxis: {
           type: 'value',
@@ -45,23 +62,33 @@ export default {
           min: 0,
           max: 100,
           axisLabel: {
-            formatter: '{value} % '
+            formatter: '{value} %'
           },
-          series: [{
+          axisLine: {
+            lineStyle: {
+              color: 'rgb(255,255,255)'
+            }
+          }
+        },
+        series: [
+          {
+            showBackground: true,
             backgroundStyle: {
-              color: 'rgba(180, 183, 180, 03)'
+              color: 'rgba(180, 180, 180, 0.2)'
             },
-            name: '湿度',
-            yAxisIndex: 1,
             type: 'bar',
-            data: [60, 70, 80, 50, 60, 70, 80, 50, 60, 70],
+            data: [this.rannum(), this.rannum(), this.rannum(), this.rannum(), this.rannum()],
             animationDuration
-          }]
-        }
+          }
+        ]
       }
-      chart.setOption(option)
-    }
-  }
+      chart.setOption(option);
+    },
+  },
+  beforeDestroy() {
+    clearInterval(this.t1);
+    clearInterval(this.t2);
+  },
 }
 </script>
 
