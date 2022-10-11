@@ -7,7 +7,7 @@
       <div class="content">
         <div class="col col-l">
           <left1/>
-          <left2/>
+          <left2 :msg="chartData"/>
         </div>
         <div class="col col-c">
           <mid1/>
@@ -30,15 +30,25 @@ import mid1 from '@/components/Bigscreen/mid1'
 import mid2 from '@/components/Bigscreen/mid2'
 import Right1 from '@/components/Bigscreen/right1'
 import Right2 from '@/components/Bigscreen/right2'
+import {getNewData,getEquipment,getChartData } from  "@/api/pig/bigscreen"
+
 
 export default {
   name: 'index',
   data() {
     return {
-      header_title_text: '可视化大屏数据'
+      header_title_text: '可视化大屏数据',
+      chartData,
     }
   },
-  methods: {},
+  methods: {
+    initChartData(){
+      getChartData().then(response => {
+          this.chartData = response.data;
+        }
+      );
+    }
+  },
   components: {
     Right2,
     Right1,
@@ -46,6 +56,10 @@ export default {
     left2,
     mid1,
     mid2
+  },
+  created(){
+    //vue实例被加载出来 后执行
+    this.initChartData();
   }
 }
 

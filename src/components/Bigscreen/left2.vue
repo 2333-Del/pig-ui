@@ -23,8 +23,10 @@ export default {
       t1 :null,
       t2 :null,
       n:0,
+      chartData:this.msg
     }
   },
+  props:['msg'],
   mounted() {
     this.init_chart(this.chart);
 
