@@ -7,7 +7,7 @@
       <div class="content">
         <div class="col col-l">
           <left1/>
-          <left2 :msg="chartData"/>
+          <left2/>
         </div>
         <div class="col col-c">
           <mid1/>
@@ -38,13 +38,15 @@ export default {
   data() {
     return {
       header_title_text: '可视化大屏数据',
-      chartData,
+      temperature:null,
+      humidity:null,
     }
   },
   methods: {
     initChartData(){
       getChartData().then(response => {
-          this.chartData = response.data;
+          this.humidity = response.data.humidity;
+          this.temperature = response.data.temperature;
         }
       );
     }

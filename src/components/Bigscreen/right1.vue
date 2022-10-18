@@ -10,6 +10,7 @@
 
 <script>
 import * as echarts from 'echarts'
+import {getChartData } from  "@/api/pig/bigscreen"
 
 require('echarts/theme/macarons')
 
@@ -18,14 +19,18 @@ export default {
   data() {
     return {
       title: '24小时温度检测',
-      chart: null
+      chart: null,
+      temperature:[],
+      time:[],
     }
   },
   mounted() {
+    this.initChartData();
     this.init_chart(this.chart)
   },
   methods: {
     init_chart(c) {
+
       c = document.getElementById('linechart')
       const chart = echarts.init(c, 'light')
       const option = {
@@ -40,7 +45,8 @@ export default {
             color: 'rgb(0,95,255)'
           },
           type: 'category',
-          data: ['1', '2', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+          // data: this.time,
+          data: ['1', '2', '2', '3', '4', '5', '6', '7', '8', '9', '10','12'],
           axisLine: {
             lineStyle: {
               color: 'rgb(255,255,255)'
@@ -57,15 +63,29 @@ export default {
         },
         series: [
           {
-            data: [11, 22, 23, 24, 25, 56, 27, 28, 29, 22,29,10],
+            // data: this.temperature,
+            data: [11, 22, 23, 24, 25, 56, 27, 28, 29, 22,29,10,33],
             type: 'line',
             smooth: true
           }
         ]
       }
       chart.setOption(option)
-    }
-  }
+    },
+    //初始话数据
+    initChartData(){
+      getChartData().then(response => {
+          var tem = [];
+          tem = response.data.temperature;
+          for (var i = 0; i < tem.length; i++) {
+            this.temperature.push(tem[i].value)
+            this.time.push(tem[i].time)
+          }
+        }
+      );
+    },
+  },
+
 }
 
 // option = {

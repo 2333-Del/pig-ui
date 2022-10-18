@@ -1,15 +1,18 @@
 <template>
   <div class="xpanel-wrapper xpanel-wrapper-60">
     <div class="xpanel xpanel-l-b">
+<!--      <div class="title">{{ humidity }}</div>-->
       <div class="title">{{ title }}</div>
       <!--      <el-button type="info" :loading-icon="Eleme" loading>{{title}}</el-button>-->
       <div class="BarChart" id="barchart"></div>
+
     </div>
   </div>
 </template>
 
 <script>
 import * as echarts from 'echarts'
+import {getChartData } from  "@/api/pig/bigscreen"
 
 require('echarts/theme/macarons') // echarts theme
 // import resize from './mixins/resize'
@@ -23,21 +26,21 @@ export default {
       t1 :null,
       t2 :null,
       n:0,
-      chartData:this.msg
+      humidity:[],
+      time:[],
     }
   },
-  props:['msg'],
-  mounted() {
-    this.init_chart(this.chart);
 
+  mounted() {
+    this.initChartData();
+    this.init_chart(this.chart);
     let t2 = setInterval(this.init_chart,5000);
+    //vue实例被加载出来 后执行
+  },
+  created(){
+
   },
   methods: {
-    rannum() {
-      let n = Math.random() * 20 + 30;
-      console.log(n);
-      return n;
-    },
     init_chart(c) {
       c = document.getElementById('barchart')
       let chart = echarts.init(c, 'light')
@@ -51,7 +54,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['1', '2', '3', '4', '5'],
+          data: this.time,
           axisLine: {
             lineStyle: {
               color: 'rgb(255,255,255)'
@@ -62,9 +65,9 @@ export default {
           type: 'value',
           position: 'left',
           min: 0,
-          max: 100,
+          max: 40,
           axisLabel: {
-            formatter: '{value} %'
+            formatter: '{value} °C'
           },
           axisLine: {
             lineStyle: {
@@ -79,18 +82,31 @@ export default {
               color: 'rgba(180, 180, 180, 0.2)'
             },
             type: 'bar',
-            data: [this.rannum(), this.rannum(), this.rannum(), this.rannum(), this.rannum()],
+            data: this.humidity,
             animationDuration
           }
         ]
       }
       chart.setOption(option);
     },
+    initChartData(){
+      getChartData().then(response => {
+        var hum = [];
+          hum = response.data.humidity;
+          for (var i = 0; i < hum.length; i++) {
+            this.humidity.push(hum[i].value)
+            this.time.push(hum[i].time)
+          }
+        }
+      );
+    }
   },
+
   beforeDestroy() {
     clearInterval(this.t1);
     clearInterval(this.t2);
   },
+
 }
 </script>
 
