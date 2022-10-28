@@ -31,7 +31,8 @@ import mid2 from '@/components/Bigscreen/mid2'
 import Right1 from '@/components/Bigscreen/right1'
 import Right2 from '@/components/Bigscreen/right2'
 import {getNewData,getEquipment,getChartData } from  "@/api/pig/bigscreen"
-
+import md5 from 'blueimp-md5'
+import axios from 'axios'
 
 export default {
   name: 'index',
@@ -49,6 +50,23 @@ export default {
           this.temperature = response.data.temperature;
         }
       );
+    },
+    getdata(){
+      var time = new Date().getTime() + '';  //时间戳
+    // time = Hex.encode(DigestUtils.md5(timestamp+ a5b4 +key))
+    var sign = time + 'deviceNoAMT19032315470001' + 'qqzS77nREDO9hQEQCSiyOYbiDL11TVyM';
+    sign = md5(sign)
+    
+   return axios({
+  
+      method: 'get',
+      url: 'http://admin.sensor-monitor.cn/v1/getDeviceData',
+      data: {
+        deviceNo: 'AMT19032315470001',
+        timestamp: time,
+        sign: sign,
+     }
+  });
     }
   },
   components: {
@@ -62,6 +80,7 @@ export default {
   created(){
     //vue实例被加载出来 后执行
     this.initChartData();
+    this.getdata();
   }
 }
 
