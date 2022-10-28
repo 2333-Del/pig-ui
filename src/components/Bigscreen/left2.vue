@@ -35,6 +35,7 @@ export default {
     this.initChartData();
     this.init_chart(this.chart);
     let t2 = setInterval(this.init_chart,5000);
+
     //vue实例被加载出来 后执行
   },
   created(){
@@ -42,6 +43,8 @@ export default {
   },
   methods: {
     init_chart(c) {
+      console.log("1111111111111111111111111")
+      console.log(this.humidity)
       c = document.getElementById('barchart')
       let chart = echarts.init(c, 'light')
       let animationDuration = 6000

@@ -12,7 +12,7 @@ export function getdata(query) {
     method: 'get',
     url: 'http://admin.sensor-monitor.cn/v1/getDeviceData',
     data: {
-      deviceNo: 'AMT19032315470001',
+      deviceNo: 'AMT22041216320011',
       timestamp: time,
       sign: sign,
     }
