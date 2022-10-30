@@ -69,11 +69,11 @@ export default {
             data: [
               { value: 28.5, name: "温度" },
               { value: 72, name: '湿度' },
-              { value: 580, name: 'PM2.5' },
-              { value: 484, name: 'PM10' },
-              { value: 2891, name: '二氧化碳' },
+              { value: 350, name: 'PM2.5' },
+              { value: 320, name: 'PM10' },
+              { value: 300, name: '二氧化碳' },
               { value: 0, name: '一氧化碳' },
-              { value: 62, name: '氨气' },
+              { value: 70, name: '氨气' },
               { value: 0, name: '硫化氢' },
 
             ]
