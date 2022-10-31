@@ -27,7 +27,7 @@ export default {
   mounted() {
     this.initChartData();
     this.init_chart(this.chart)
-    let t2 = setInterval(this.init_chart,5000);
+    let t2 = setInterval(this.init_chart,10000);
   },
   methods: {
     init_chart(c) {
@@ -53,6 +53,9 @@ export default {
               color: 'rgb(255,255,255)'
             }
           },
+        },
+        grid:{
+
         },
         yAxis: {
           type: 'value',

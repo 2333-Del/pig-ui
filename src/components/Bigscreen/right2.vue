@@ -9,6 +9,7 @@
 
 <script>
 import * as echarts from 'echarts'
+import { getChartData, getNewData } from '@/api/pig/bigscreen'
 
 require('echarts/theme/macarons') // echarts theme
 
@@ -19,11 +20,23 @@ export default {
   data(){
     return{
       title:"标题4",
-      chart:null
+      chart:null,
+      temperature:null,
+      ammonia:null,
+      humidity:null,
+      pm25:null,
+      pm10:null,
+      co2:null,
+      co:null,
+      sulfHydr:null
     }
   },
   mounted() {
+    this.initChartData();
     this.init_chart(this.chart);
+    let t2 = setInterval(this.init_chart,5000);
+    console.log(this.temperature)
+
   },
   methods:{
     init_chart(c) {
@@ -42,7 +55,7 @@ export default {
           left: 'center',
         },
         grid:{
-          top:"12%",
+          top:"80%",
         },
         series: [
           {
@@ -70,21 +83,35 @@ export default {
               show: true
             },
             data: [
-              { value: 28.5, name: "温度" },
-              { value: 72, name: '湿度' },
-              { value: 350, name: 'PM2.5' },
-              { value: 320, name: 'PM10' },
-              { value: 300, name: '二氧化碳' },
-              { value: 0, name: '一氧化碳' },
-              { value: 70, name: '氨气' },
-              { value: 0, name: '硫化氢' },
+              { value: this.temperature, name: "温度" },
+              { value: this.humidity, name: '湿度' },
+              { value: this.pm25, name: 'PM2.5' },
+              { value: this.pm10, name: 'PM10' },
+              { value: this.co2, name: '二氧化碳' },
+              { value: this.co, name: '一氧化碳' },
+              { value: this.ammonia, name: '氨气' },
+              { value: this.sulfHydr, name: '硫化氢' },
 
             ]
           }
         ]
       };
       chart.setOption(option);
-    }
+    },
+    //初始话数据
+    initChartData(){
+      getNewData().then(response => {
+        this.temperature = response.data[0].temperature;
+        this.ammonia = response.data[0].ammonia;
+        this.humidity = response.data[0].humidity;
+        this.pm25 = response.data[0].pm25;
+        this.pm10 = response.data[0].pm10;
+        this.co2 = response.data[0].co2;
+        this.co = response.data[0].co;
+        this.sulfHydr = response.data[0].sulfHydr;
+        }
+      );
+    },
   }
 }
 </script>

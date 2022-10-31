@@ -17,11 +17,13 @@
 </template>
 
 <script>
+import * as echarts from 'echarts'
+import {getChartData } from  "@/api/pig/bigscreen"
 export default {
   name: "left1",
   data(){
     return{
-      title:"设备指标",
+      title:"24小时二氧化碳监测",
       items:[
         {tag_name:"温度",tag_value:"28.5",tag_mark:"℃"},
         {tag_name:"湿度",tag_value:"72",tag_mark:"%"},
@@ -46,7 +48,8 @@ export default {
 
   option = {
    title: {
-      text: '' //title here
+      text: '', //title here
+      color:"#FFFFFF"
     },
     tooltip: {
      trigger: 'axis',
@@ -62,7 +65,6 @@ export default {
     },
     toolbox: {
       feature: {
-        saveAsImage: {}
       }
     },
     grid: {
@@ -73,7 +75,7 @@ export default {
     },
     xAxis: [
       {
-        type: 'category',//  
+        type: 'category',//
         boundaryGap: false,
         data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12'],
         axisLine: {
@@ -140,7 +142,7 @@ export default {
   font-size: large;
 }
 .CO2_Chart{
-  height: 400px;
+  height: 70%;
   width: auto;
 }
 </style>
