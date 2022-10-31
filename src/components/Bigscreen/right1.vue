@@ -60,6 +60,9 @@ export default {
             lineStyle: {
               color: 'rgb(255,255,255)'
             }
+          },
+          splitLine: {
+            show: false
           }
         },
         series: [
@@ -143,7 +146,7 @@ export default {
 
 <style scoped>
 .LineChart {
-  margin-top: 1%;
+  /* margin-top: 1%; */
   height: 300px;
   width: auto;
 }

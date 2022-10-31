@@ -41,6 +41,9 @@ export default {
           top: '5%',
           left: 'center',
         },
+        grid:{
+          top:"12%",
+        },
         series: [
           {
             name: '监测数据',
@@ -88,7 +91,7 @@ export default {
 
 <style scoped>
 .PieChart {
-  margin-top: 5%;
+  /* margin-top: 5%; */
 
   height: 400px;
   width: auto;

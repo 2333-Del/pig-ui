@@ -9,12 +9,9 @@
         <el-tag>设备编号：AMT22041216320011</el-tag>
       </p>
 
-      <div class="tag-group">
-        <p class="p2-l" style="flex-wrap: initial" v-for="item in items">
-          <el-tag id="p2_l_tag_name" type="dark" >{{item.tag_name}}</el-tag>
-          <el-tag class="p2-r" >{{item.tag_value}}{{item.tag_mark}}</el-tag>
-        </p>
-      </div>
+
+      <div class="CO2_Chart" id="CO2_Chart"></div>
+
     </div>
   </div>
 </template>
@@ -34,14 +31,86 @@ export default {
         {tag_name:"一氧化碳",tag_value:"0",tag_mark:"ppm"},
         {tag_name:"氨气",tag_value:"62",tag_mark:"ppm"},
         {tag_name:"硫化氢",tag_value:"0",tag_mark:"ppm"},
-      ]
+      ],
+      chart: null,
     }
   },
   mounted() {
-
+    this.init_chart(this.chart);
   },
   methods:{
+  init_chart(){
+  var chartDom = document.getElementById('CO2_Chart');
+  var myChart = echarts.init(chartDom);
+  var option;
 
+  option = {
+   title: {
+      text: '' //title here
+    },
+    tooltip: {
+     trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#FFFFFF' //no change here
+        }
+      }
+    },
+    legend: {
+      data: ['CO2']
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',//  
+        boundaryGap: false,
+        data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12'],
+        axisLine: {
+            lineStyle: {
+              color: 'rgb(255,255,255)'
+            }
+          }
+      }
+    ],
+    yAxis: [
+      {
+       type: 'value',
+       splitLine: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+              color: 'rgb(255,255,255)'
+            }
+          }
+      },
+   ],
+   series: [
+      {
+        name: 'Email',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+        focus: 'series'
+       },
+        data: [2221,2100,2311,2111,3321,2221,2100,2311,2111,3321,2118,1767]
+     }
+    ]
+  };
+    option && myChart.setOption(option);
+    }
   }
 }
 </script>
@@ -69,5 +138,9 @@ export default {
   margin-top: 3px;
   margin-left: 5px;
   font-size: large;
+}
+.CO2_Chart{
+  height: 400px;
+  width: auto;
 }
 </style>

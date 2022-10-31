@@ -76,6 +76,9 @@ export default {
             lineStyle: {
               color: 'rgb(255,255,255)'
             }
+          },
+          splitLine: {
+            show: false
           }
         },
         series: [
@@ -115,8 +118,7 @@ export default {
 
 <style scoped>
 .BarChart {
-  margin-top: 5%;
-
+  /* margin-top: 5%; */
   height: 400px;
   width: auto;
 }

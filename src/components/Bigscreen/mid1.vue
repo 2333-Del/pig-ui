@@ -167,7 +167,7 @@ export default {
 
 .rowrow {
   margin-top: 10px;
-  font-size: large;
+  font-size:medium;
   /*border-bottom: 1px solid #ffffff;*/
 }
 
