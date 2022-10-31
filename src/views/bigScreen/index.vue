@@ -37,32 +37,31 @@ export default {
   data() {
     return {
       header_title_text: '可视化大屏数据',
-      temperature: null,
-      humidity: null,
+      temperature:null,
+      humidity:null,
     }
   },
   methods: {
-    initChartData() {
+    initChartData(){
       getChartData().then(response => {
           this.humidity = response.data.humidity;
           this.temperature = response.data.temperature;
         }
       );
     },
+  },
+  components: {
+    Right2,
+    Right1,
+    left1,
+    left2,
+    mid1,
+    mid2
+  },
+  created(){
+    //vue实例被加载出来 后执行
+    this.initChartData();
 
-    components: {
-      Right2,
-      Right1,
-      left1,
-      left2,
-      mid1,
-      mid2
-    },
-    created() {
-      //vue实例被加载出来 后执行
-      this.initChartData();
-      this.getdata();
-    }
   }
 }
 

@@ -156,7 +156,7 @@ export default {
 
 .video {
   padding: 5px;
-  border: 1px solid;
+  /*border: 1px solid;*/
   width: 100%;
   height: 400px;
 }

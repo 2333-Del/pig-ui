@@ -46,8 +46,8 @@ export default {
             color: 'rgb(0,95,255)'
           },
           type: 'category',
-          // data: this.time,
-          data: ['1', '2', '2', '3', '4', '5', '6', '7', '8', '9', '10','12'],
+          data: this.time,
+          // data: ['1', '2', '2', '3', '4', '5', '6', '7', '8', '9', '10','12'],
           axisLine: {
             lineStyle: {
               color: 'rgb(255,255,255)'
@@ -64,8 +64,8 @@ export default {
         },
         series: [
           {
-            // data: this.temperature,
-            data: [11, 22, 23, 24, 25, 56, 27, 28, 29, 22,29,10,33],
+            data: this.temperature,
+            // data: [11, 22, 23, 24, 25, 56, 27, 28, 29, 22,29,10,33],
             type: 'line',
             smooth: true
           }
