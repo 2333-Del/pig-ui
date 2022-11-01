@@ -10,20 +10,17 @@
 
 <script>
 import MapContainer from '@/components/Bigscreen/MapContainer'
+
 export default {
   name: "mid3",
-  data(){
-    return{
-
-    }
+  data() {
+    return {}
   },
-  methods:{
-
-  },
+  methods: {},
   mounted() {
 
   },
-  components:{
+  components: {
     MapContainer
   }
 }

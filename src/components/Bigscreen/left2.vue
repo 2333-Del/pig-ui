@@ -1,10 +1,10 @@
 <template>
   <div class="xpanel-wrapper xpanel-wrapper-60">
     <div class="xpanel xpanel-l-b">
-<!--      <div class="title">{{ humidity }}</div>-->
+      <!--      <div class="title">{{ humidity }}</div>-->
       <div class="title">{{ title }}</div>
       <!--      <el-button type="info" :loading-icon="Eleme" loading>{{title}}</el-button>-->
-      <div class="BarChart" id="barchart"></div>
+      <div id="barchart" class="BarChart"></div>
 
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 import * as echarts from 'echarts'
-import {getChartData } from  "@/api/pig/bigscreen"
+import {getChartData} from "@/api/pig/bigscreen"
 
 require('echarts/theme/macarons') // echarts theme
 // import resize from './mixins/resize'
@@ -23,36 +23,34 @@ export default {
     return {
       title: '24小时湿度监测',
       chart: null,
-      t1 :null,
-      t2 :null,
-      n:0,
-      humidity:[],
-      time:[],
+      t1: null,
+      t2: null,
+      n: 0,
+      humidity: [],
+      time: [],
     }
   },
 
   mounted() {
     this.initChartData();
     this.init_chart(this.chart);
-    let t2 = setInterval(this.init_chart,5000);
+    this.t1 = setInterval(this.init_chart, 5000);
 
     //vue实例被加载出来 后执行
   },
-  created(){
+  created() {
 
   },
   methods: {
     init_chart(c) {
-      console.log("1111111111111111111111111")
-      console.log(this.humidity)
       c = document.getElementById('barchart')
       let chart = echarts.init(c, 'light')
       let animationDuration = 6000
       let option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer:{
-            type:"shadow",
+          axisPointer: {
+            type: "shadow",
           }
         },
         xAxis: {
@@ -95,9 +93,9 @@ export default {
       }
       chart.setOption(option);
     },
-    initChartData(){
+    initChartData() {
       getChartData().then(response => {
-        var hum = [];
+          var hum = [];
           hum = response.data.humidity;
           for (var i = 0; i < hum.length; i++) {
             this.humidity.push(hum[i].value)
@@ -110,7 +108,6 @@ export default {
 
   beforeDestroy() {
     clearInterval(this.t1);
-    clearInterval(this.t2);
   },
 
 }

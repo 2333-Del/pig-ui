@@ -3,14 +3,14 @@
     <div class="xpanel xpanel-l-t">
       <div class="title">{{ title }}</div>
       <!--      <el-button type="" :loading-icon="Eleme" loading>{{title}}</el-button>-->
-      <div class="LineChart" id="linechart"></div>
+      <div id="linechart" class="LineChart"></div>
     </div>
   </div>
 </template>
 
 <script>
 import * as echarts from 'echarts'
-import {getChartData } from  "@/api/pig/bigscreen"
+import {getChartData} from "@/api/pig/bigscreen"
 
 require('echarts/theme/macarons')
 
@@ -20,25 +20,25 @@ export default {
     return {
       title: '24小时温度检测',
       chart: null,
-      temperature:[],
-      time:[],
+      temperature: [],
+      time: [],
+      t1: null
     }
   },
   mounted() {
     this.initChartData();
-    this.init_chart(this.chart)
-    let t2 = setInterval(this.init_chart,5000);
+    this.init_chart(this.chart);
+    this.t1 = setInterval(this.init_chart, 5000);
   },
   methods: {
-    init_chart(c) {
-      console.log(this.temperature)
-      c = document.getElementById('linechart')
+    init_chart() {
+      let c = document.getElementById('linechart')
       const chart = echarts.init(c, 'light')
       const option = {
         tooltip: {
           trigger: 'axis',
-          axisPointer:{
-            type:"shadow",
+          axisPointer: {
+            type: "shadow",
           }
         },
         xAxis: {
@@ -54,9 +54,7 @@ export default {
             }
           },
         },
-        grid:{
-
-        },
+        grid: {},
         yAxis: {
           type: 'value',
           axisLine: {
@@ -80,7 +78,7 @@ export default {
       chart.setOption(option)
     },
     //初始话数据
-    initChartData(){
+    initChartData() {
       getChartData().then(response => {
           var tem = [];
           tem = response.data.temperature;

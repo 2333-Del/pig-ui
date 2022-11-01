@@ -2,15 +2,13 @@
 
   <div class="xpanel-wrapper xpanel-wrapper-40">
     <div class="xpanel xpanel-l-t">
-      <div class="title">{{title}}</div>
+      <div class="title">{{ title }}</div>
       <p class="p1">
-<!--        <el-button type="primary" :loading-icon="Eleme" loading>实时监测中</el-button>-->
-<!--        <el-tag type="">设备名称：环境检测仪Z1</el-tag>-->
-<!--        <el-tag>设备编号：AMT22041216320011</el-tag>-->
+        <!--        <el-button type="primary" :loading-icon="Eleme" loading>实时监测中</el-button>-->
+        <!--        <el-tag type="">设备名称：环境检测仪Z1</el-tag>-->
+        <!--        <el-tag>设备编号：AMT22041216320011</el-tag>-->
       </p>
-
-
-      <div class="CO2_Chart" id="CO2_Chart"></div>
+      <div id="CO2_Chart" class="CO2_Chart"></div>
 
     </div>
   </div>
@@ -18,102 +16,105 @@
 
 <script>
 import * as echarts from 'echarts'
-import {getChartData } from  "@/api/pig/bigscreen"
+
 export default {
   name: "left1",
-  data(){
-    return{
-      title:"24小时二氧化碳监测",
-      items:[
-        {tag_name:"温度",tag_value:"28.5",tag_mark:"℃"},
-        {tag_name:"湿度",tag_value:"72",tag_mark:"%"},
-        {tag_name:"PM2.5",tag_value:"42",tag_mark:"mg/m³"},
-        {tag_name:"PM10",tag_value:"66",tag_mark:"mg/m³"},
-        {tag_name:"二氧化碳",tag_value:"2891",tag_mark:"ppm"},
-        {tag_name:"一氧化碳",tag_value:"0",tag_mark:"ppm"},
-        {tag_name:"氨气",tag_value:"62",tag_mark:"ppm"},
-        {tag_name:"硫化氢",tag_value:"0",tag_mark:"ppm"},
+  data() {
+    return {
+      title: "24小时二氧化碳监测",
+      items: [
+        {tag_name: "温度", tag_value: "28.5", tag_mark: "℃"},
+        {tag_name: "湿度", tag_value: "72", tag_mark: "%"},
+        {tag_name: "PM2.5", tag_value: "42", tag_mark: "mg/m³"},
+        {tag_name: "PM10", tag_value: "66", tag_mark: "mg/m³"},
+        {tag_name: "二氧化碳", tag_value: "2891", tag_mark: "ppm"},
+        {tag_name: "一氧化碳", tag_value: "0", tag_mark: "ppm"},
+        {tag_name: "氨气", tag_value: "62", tag_mark: "ppm"},
+        {tag_name: "硫化氢", tag_value: "0", tag_mark: "ppm"},
       ],
       chart: null,
+      t1: null,
     }
   },
   mounted() {
     this.init_chart(this.chart);
+    this.t1 = setInterval(this.init_chart, 5000);
   },
-  methods:{
-  init_chart(){
-  var chartDom = document.getElementById('CO2_Chart');
-  var myChart = echarts.init(chartDom);
-  var option;
-
-  option = {
-   title: {
-      text: '', //title here
-      color:"#FFFFFF"
-    },
-    tooltip: {
-     trigger: 'axis',
-      axisPointer: {
-        type: 'cross',
-        label: {
-          backgroundColor: '#FFFFFF' //no change here
-        }
-      }
-    },
-    legend: {
-      data: ['CO2']
-    },
-    toolbox: {
-      feature: {
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        type: 'category',//
-        boundaryGap: false,
-        data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12'],
-        axisLine: {
-            lineStyle: {
-              color: 'rgb(255,255,255)'
-            }
-          }
-      }
-    ],
-    yAxis: [
-      {
-       type: 'value',
-       splitLine: {
-            show: false
+  methods: {
+    init_chart() {
+      var chartDom = document.getElementById('CO2_Chart');
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        title: {
+          text: '', //title here
+          color: "#FFFFFF"
         },
-        axisLine: {
-            lineStyle: {
-              color: 'rgb(255,255,255)'
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            label: {
+              backgroundColor: '#FFFFFF' //no change here
             }
           }
-      },
-   ],
-   series: [
-      {
-        name: 'Email',
-        type: 'line',
-        stack: 'Total',
-        areaStyle: {},
-        emphasis: {
-        focus: 'series'
-       },
-        data: [2221,2100,2311,2111,3321,2221,2100,2311,2111,3321,2118,1767]
-     }
-    ]
-  };
-    option && myChart.setOption(option);
+        },
+        legend: {
+          data: ['CO2']
+        },
+        toolbox: {
+          feature: {}
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',//
+            boundaryGap: false,
+            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+            axisLine: {
+              lineStyle: {
+                color: 'rgb(255,255,255)'
+              }
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            splitLine: {
+              show: false
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgb(255,255,255)'
+              }
+            }
+          },
+        ],
+        series: [
+          {
+            name: 'Email',
+            type: 'line',
+            stack: 'Total',
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [2221, 2100, 2311, 2111, 3321, 2221, 2100, 2311, 2111, 3321, 2118, 1767]
+          }
+        ]
+      };
+      option && myChart.setOption(option);
     }
-  }
+  },
+  beforeDestroy() {
+    clearInterval(this.t1);
+  },
 }
 </script>
 
@@ -122,7 +123,8 @@ export default {
 .p1 {
   margin: 5px;
 }
-.tag-group{
+
+.tag-group {
   column-count: 2;
   margin-top: 30px;
 }
@@ -132,16 +134,19 @@ export default {
   margin-left: 20px;
   font-size: large;
 }
-#p2_l_tag_name{
+
+#p2_l_tag_name {
   font-size: large;
 
 }
+
 .p2-r {
   margin-top: 3px;
   margin-left: 5px;
   font-size: large;
 }
-.CO2_Chart{
+
+.CO2_Chart {
   height: 70%;
   width: auto;
 }

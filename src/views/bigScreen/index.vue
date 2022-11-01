@@ -11,7 +11,7 @@
         </div>
         <div class="col col-c">
           <mid1/>
-<!--          <mid2/>-->
+          <!--          <mid2/>-->
           <mid3/>
         </div>
         <div class="col col-r">
@@ -32,19 +32,19 @@ import mid2 from '@/components/Bigscreen/mid2'
 import Right1 from '@/components/Bigscreen/right1'
 import Right2 from '@/components/Bigscreen/right2'
 import mid3 from '@/components/Bigscreen/mid3'
-import {getNewData,getEquipment,getChartData } from  "@/api/pig/bigscreen"
+import {getChartData} from "@/api/pig/bigscreen"
 
 export default {
   name: 'index',
   data() {
     return {
       header_title_text: '可视化大屏数据',
-      temperature:null,
-      humidity:null,
+      temperature: null,
+      humidity: null,
     }
   },
   methods: {
-    initChartData(){
+    initChartData() {
       getChartData().then(response => {
           this.humidity = response.data.humidity;
           this.temperature = response.data.temperature;
@@ -61,7 +61,7 @@ export default {
     mid2,
     mid3
   },
-  created(){
+  created() {
     //vue实例被加载出来 后执行
     this.initChartData();
 
