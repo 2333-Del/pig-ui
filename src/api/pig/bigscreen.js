@@ -26,3 +26,14 @@ export function getEquipment() {
 }
 
 
+// 获取co2图表数据
+export function getChartCo2Data() {
+  return request({
+    url: '/pig/bigScreen/getChartCo2Data',
+    method: 'get'
+  })
+}
+
+
+
+

@@ -16,6 +16,7 @@
 
 <script>
 import * as echarts from 'echarts'
+import { getChartCo2Data } from '@/api/pig/bigscreen'
 
 export default {
   name: "left1",
@@ -34,13 +35,27 @@ export default {
       ],
       chart: null,
       t1: null,
+      co2: [],
+      time: [],
     }
   },
   mounted() {
+    this.initChartData();
     this.init_chart(this.chart);
     this.t1 = setInterval(this.init_chart, 5000);
   },
   methods: {
+    initChartData() {
+      getChartCo2Data().then(response => {
+          var tem = [];
+          tem = response.data.co2;
+          for (var i = 0; i < tem.length; i++) {
+            this.co2.push(tem[i].value)
+            this.time.push(tem[i].time)
+          }
+        }
+      );
+    },
     init_chart() {
       var chartDom = document.getElementById('CO2_Chart');
       var myChart = echarts.init(chartDom);
@@ -75,7 +90,7 @@ export default {
           {
             type: 'category',//
             boundaryGap: false,
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+            data: this.time,
             axisLine: {
               lineStyle: {
                 color: 'rgb(255,255,255)'
@@ -105,7 +120,7 @@ export default {
             emphasis: {
               focus: 'series'
             },
-            data: [2221, 2100, 2311, 2111, 3321, 2221, 2100, 2311, 2111, 3321, 2118, 1767]
+            data: this.co2
           }
         ]
       };
