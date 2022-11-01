@@ -40,13 +40,15 @@ export default {
     }
   },
   mounted() {
-    this.initChartData();
+
     this.init_chart(this.chart);
     this.t1 = setInterval(this.init_chart, 5000);
   },
   methods: {
     initChartData() {
       getChartCo2Data().then(response => {
+        this.co2.length = 0
+        this.time.length = 0
           var tem = [];
           tem = response.data.co2;
           for (var i = 0; i < tem.length; i++) {
@@ -57,6 +59,7 @@ export default {
       );
     },
     init_chart() {
+      this.initChartData();
       var chartDom = document.getElementById('CO2_Chart');
       var myChart = echarts.init(chartDom);
       var option;
@@ -103,6 +106,9 @@ export default {
             type: 'value',
             splitLine: {
               show: false
+            },
+            axisLabel: {
+              formatter: '{value} ppm'
             },
             axisLine: {
               lineStyle: {

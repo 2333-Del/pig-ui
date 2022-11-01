@@ -32,7 +32,7 @@ export default {
   },
 
   mounted() {
-    this.initChartData();
+
     this.init_chart(this.chart);
     this.t1 = setInterval(this.init_chart, 5000);
 
@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     init_chart(c) {
+      this.initChartData();
       c = document.getElementById('barchart')
       let chart = echarts.init(c, 'light')
       let animationDuration = 6000
@@ -68,7 +69,7 @@ export default {
           min: 0,
           max: 40,
           axisLabel: {
-            formatter: '{value} °C'
+            formatter: '{value} %'
           },
           axisLine: {
             lineStyle: {
@@ -95,6 +96,8 @@ export default {
     },
     initChartData() {
       getChartData().then(response => {
+        this.humidity.length = 0
+        this.time.length = 0
           var hum = [];
           hum = response.data.humidity;
           for (var i = 0; i < hum.length; i++) {

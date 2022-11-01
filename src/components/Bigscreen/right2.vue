@@ -33,13 +33,14 @@ export default {
     }
   },
   mounted() {
-    this.initChartData();
+
     this.init_chart(this.chart);
     this.t1 = setInterval(this.init_chart, 5000);
 
   },
   methods: {
     init_chart(c) {
+      this.initChartData();
       c = document.getElementById('piechart');
       const chart = echarts.init(c, 'light')
       option = {

@@ -26,12 +26,13 @@ export default {
     }
   },
   mounted() {
-    this.initChartData();
+
     this.init_chart(this.chart);
     this.t1 = setInterval(this.init_chart, 5000);
   },
   methods: {
     init_chart() {
+      this.initChartData();
       let c = document.getElementById('linechart')
       const chart = echarts.init(c, 'light')
       const option = {
@@ -57,10 +58,14 @@ export default {
         grid: {},
         yAxis: {
           type: 'value',
+          axisLabel: {
+            formatter: '{value} °C'
+          },
           axisLine: {
             lineStyle: {
               color: 'rgb(255,255,255)'
-            }
+            },
+
           },
           splitLine: {
             show: false
@@ -80,6 +85,8 @@ export default {
     //初始话数据
     initChartData() {
       getChartData().then(response => {
+        this.temperature.length = 0
+        this.time.length = 0
           var tem = [];
           tem = response.data.temperature;
           for (var i = 0; i < tem.length; i++) {
