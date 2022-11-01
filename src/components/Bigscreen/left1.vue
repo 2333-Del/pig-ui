@@ -5,8 +5,8 @@
       <div class="title">{{title}}</div>
       <p class="p1">
 <!--        <el-button type="primary" :loading-icon="Eleme" loading>实时监测中</el-button>-->
-        <el-tag type="">设备名称：环境检测仪Z1</el-tag>
-        <el-tag>设备编号：AMT22041216320011</el-tag>
+<!--        <el-tag type="">设备名称：环境检测仪Z1</el-tag>-->
+<!--        <el-tag>设备编号：AMT22041216320011</el-tag>-->
       </p>
 
 

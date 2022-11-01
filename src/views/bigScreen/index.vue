@@ -11,7 +11,8 @@
         </div>
         <div class="col col-c">
           <mid1/>
-          <mid2/>
+<!--          <mid2/>-->
+          <mid3/>
         </div>
         <div class="col col-r">
           <right1/>
@@ -30,6 +31,7 @@ import mid1 from '@/components/Bigscreen/mid1'
 import mid2 from '@/components/Bigscreen/mid2'
 import Right1 from '@/components/Bigscreen/right1'
 import Right2 from '@/components/Bigscreen/right2'
+import mid3 from '@/components/Bigscreen/mid3'
 import {getNewData,getEquipment,getChartData } from  "@/api/pig/bigscreen"
 
 export default {
@@ -56,7 +58,8 @@ export default {
     left1,
     left2,
     mid1,
-    mid2
+    mid2,
+    mid3
   },
   created(){
     //vue实例被加载出来 后执行

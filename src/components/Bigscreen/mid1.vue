@@ -1,5 +1,5 @@
 <template xmlns="http://www.w3.org/1999/html">
-  <div class="xpanel-wrapper xpanel-wrapper-75">
+  <div class="xpanel-wrapper xpanel-wrapper-55">
     <div class="xpanel no-bg" id="main">
       <el-container>
         <el-main>
@@ -9,55 +9,56 @@
           <div class="video">
             <jsmpeg_player :url="url"/>
           </div>
-          <el-tag class="tag_info" type="info">信息</el-tag>
-          <el-row class="rowrow">
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-info"></i>
-                <span>名称：</span>
-                <span>{{ ground_name }}</span>
-              </div>
-            </el-col>
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-date"></i>
-                <span>连接时间：</span>
-                <span>{{ connected_datetime }}</span>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row class="rowrow">
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-guide"></i>
-                <span>设备归属：</span>
-                <span>{{ belonging }}</span>
-              </div>
-            </el-col>
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-connection"></i>
-                <span>连接状态：</span>
-                <span>{{ is_connected }}</span>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row class="rowrow">
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-user"></i>
-                <span>联系人：</span>
-                <span>{{ belonging }}</span>
-              </div>
-            </el-col>
-            <el-col :span="12">
-              <div class="grid-content bg-purple-dark">
-                <i class="el-icon-phone-outline"></i>
-                <span>联系电话：</span>
-                <span>{{ belonging_phone }}</span>
-              </div>
-            </el-col>
-          </el-row>
+
+<!--          <el-tag class="tag_info" type="info">信息</el-tag>-->
+<!--          <el-row class="rowrow">-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-info"></i>-->
+<!--                <span>名称：</span>-->
+<!--                <span>{{ ground_name }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-date"></i>-->
+<!--                <span>连接时间：</span>-->
+<!--                <span>{{ connected_datetime }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--          </el-row>-->
+<!--          <el-row class="rowrow">-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-guide"></i>-->
+<!--                <span>设备归属：</span>-->
+<!--                <span>{{ belonging }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-connection"></i>-->
+<!--                <span>连接状态：</span>-->
+<!--                <span>{{ is_connected }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--          </el-row>-->
+<!--          <el-row class="rowrow">-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-user"></i>-->
+<!--                <span>联系人：</span>-->
+<!--                <span>{{ belonging }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--            <el-col :span="12">-->
+<!--              <div class="grid-content bg-purple-dark">-->
+<!--                <i class="el-icon-phone-outline"></i>-->
+<!--                <span>联系电话：</span>-->
+<!--                <span>{{ belonging_phone }}</span>-->
+<!--              </div>-->
+<!--            </el-col>-->
+<!--          </el-row>-->
         </el-main>
       </el-container>
 
@@ -167,7 +168,7 @@ export default {
 
 .rowrow {
   margin-top: 10px;
-  font-size:medium;
+  font-size: medium;
   /*border-bottom: 1px solid #ffffff;*/
 }
 

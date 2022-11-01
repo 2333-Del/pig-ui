@@ -19,7 +19,7 @@ export default {
   name: "right2",
   data(){
     return{
-      title:"标题4",
+      title:"设备最新数据",
       chart:null,
       temperature:null,
       ammonia:null,
@@ -47,16 +47,14 @@ export default {
           trigger: 'item'
         },
         legend: {
-
+          show:false,
           textStyle:{
             color:"#FFFFFF",
           },
-          top: '5%',
+          top: '1%',
           left: 'center',
         },
-        grid:{
-          top:"80%",
-        },
+
         series: [
           {
             name: '监测数据',
@@ -66,31 +64,57 @@ export default {
             itemStyle: {
               borderRadius: 10,
               borderColor: '#ffffff',
-              borderWidth: 2
+              borderWidth: 2,
             },
+            top:"10%",
+            // label: {
+            //   show: true,
+            //
+            // },
+            // emphasis: {
+            //   label: {
+            //     show: true,
+            //     fontSize: '40',
+            //     fontWeight: 'bold'
+            //   }
+            // },
+            // labelLine: {
+            //   show: true
+            // },
             label: {
-              show: false,
-              position: 'center'
+              show: true,
+              // formatter: '{a}\n \n  {b}：  {d}',
+              // formatter: '{a|{b}：{d}%}\n{hr|}',
+              formatter: '{b}',
+              color: '#fff',
             },
             emphasis: {
               label: {
                 show: true,
-                fontSize: '40',
-                fontWeight: 'bold'
-              }
+                fontSize: '15',
+                fontWeight: 'bold',
+                color: '#fff',
+              },
             },
             labelLine: {
-              show: true
+              show: true,
+              length: 5,
+              length2: 5,
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: '#FFF'
+              }
             },
             data: [
-              { value: this.temperature, name: "温度" },
-              { value: this.humidity, name: '湿度' },
-              { value: this.pm25, name: 'PM2.5' },
-              { value: this.pm10, name: 'PM10' },
-              { value: this.co2, name: '二氧化碳' },
-              { value: this.co, name: '一氧化碳' },
-              { value: this.ammonia, name: '氨气' },
-              { value: this.sulfHydr, name: '硫化氢' },
+              { value: 0, name: "温度:\n"+this.temperature+"℃" },
+              { value: 0, name: '湿度:\n'+this.humidity+"%" },
+              { value: 0, name: 'PM2.5:\n'+this.pm25+"mg/m³" },
+              { value: 0, name: 'PM10:\n' +this.pm10+"mg/m³"},
+              { value: 0, name: '二氧化碳:\n' +this.co2+"ppm"},
+              { value: 0, name: '一氧化碳:\n'+ this.co+"ppm" },
+              { value: 0, name: '氨气:\n' +this.ammonia+"ppm"},
+              { value: 0, name: '硫化氢:\n' +this.sulfHydr+"ppm"},
 
             ]
           }
@@ -119,7 +143,6 @@ export default {
 <style scoped>
 .PieChart {
   /* margin-top: 5%; */
-
   height: 400px;
   width: auto;
 }
