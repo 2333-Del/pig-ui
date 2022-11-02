@@ -67,7 +67,7 @@ export default {
           type: 'value',
           position: 'left',
           min: 0,
-          max: 40,
+          max:100,
           axisLabel: {
             formatter: '{value} %'
           },
